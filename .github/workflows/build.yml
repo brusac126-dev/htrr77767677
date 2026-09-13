@@ -1,0 +1,21 @@
+name: Compila App iOS
+
+on:
+  push:
+    branches: [ "main", "principale" ]
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+    - name: Scarica il codice
+      uses: actions/checkout@v4
+
+    - name: Compila il progetto Xcode
+      run: |
+        xcodebuild build \
+          -project "ESP32TimerApp.xcodeproj" \
+          -scheme "ESP32TimerApp" \
+          -destination 'generic/platform=iOS' \
+          CODE_SIGNING_ALLOWED=NO

@@ -1,10 +1,11 @@
-name: Compila App iOS
+name: Compila App iOS per TrollStore
 
 on:
   push:
     branches: [ "main", "principale", "master" ]
   pull_request:
     branches: [ "main", "principale", "master" ]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -14,23 +15,30 @@ jobs:
     - name: Scarica il codice
       uses: actions/checkout@v4
 
-    - name: Compila il progetto Xcode
+    - name: Imposta versione Xcode
+      uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: latest-stable
+
+    - name: Compila il progetto Xcode (Release)
       run: |
         xcodebuild build \
           -project "ESP32TimerApp.xcodeproj" \
           -scheme "ESP32TimerApp" \
-          -destination 'generic/platform=iOS' \
+          -sdk iphoneos \
+          -configuration Release \
           -derivedDataPath build \
-          CODE_SIGNING_ALLOWED=NO
+          CODE_SIGNING_ALLOWED=NO \
+          CODE_SIGNING_REQUIRED=NO
 
-    - name: Prepara ed esporta l'applicazione
+    - name: Prepara ed esporta l'IPA per TrollStore
       run: |
         mkdir -p Payload
-        cp -r build/Build/Products/Debug-iphoneos/*.app Payload/
-        zip -r ESP32TimerApp.ipa Payload
+        cp -r build/Build/Products/Release-iphoneos/*.app Payload/
+        zip -r ESP32TimerApp-TrollStore.ipa Payload
 
-    - name: Carica il file scaricabile
+    - name: Carica l'IPA negli Artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: ESP32TimerApp-IPA
-        path: ESP32TimerApp.ipa
+        name: ESP32TimerApp-TrollStore
+        path: ESP32TimerApp-TrollStore.ipa

@@ -1,0 +1,33 @@
+// !$*UTF8*$!
+{
+ archiveVersion = 1;
+ classes = {};
+ objectVersion = 56;
+ objects = {
+  A1 = { isa = PBXProject; attributes = { LastUpgradeCheck = 1600; }; buildConfigurationList = C1; compatibilityVersion = "Xcode 14.0"; developmentRegion = en; knownRegions = ( en, Base ); mainGroup = G1; productRefGroup = G2; projectDirPath = ""; projectRoot = ""; targets = ( T1 ); };
+  G1 = { isa = PBXGroup; children = (G3, P1); sourceTree = "<group>"; };
+  G2 = { isa = PBXGroup; children = (APP); name = Products; sourceTree = "<group>"; };
+  G3 = { isa = PBXGroup; children = (F1,F2,F3,F4); path = ESP32TimerApp; sourceTree = "<group>"; };
+  P1 = { isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ESP32TimerApp/Info.plist; sourceTree = "<group>"; };
+  F1 = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+  F2 = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+  F3 = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESP32Client.swift; sourceTree = "<group>"; };
+  F4 = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+  APP = { isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ESP32TimerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+  B1 = { isa = PBXBuildFile; fileRef = F1; };
+  B2 = { isa = PBXBuildFile; fileRef = F2; };
+  B3 = { isa = PBXBuildFile; fileRef = F3; };
+  B4 = { isa = PBXBuildFile; fileRef = F4; };
+  R1 = { isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+  S1 = { isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (B1,B2,B3,B4); runOnlyForDeploymentPostprocessing = 0; };
+  L1 = { isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+  T1 = { isa = PBXNativeTarget; buildConfigurationList = C2; buildPhases = (S1,L1,R1); buildRules = (); dependencies = (); name = ESP32TimerApp; productName = ESP32TimerApp; productReference = APP; productType = "com.apple.product-type.application"; };
+  C1 = { isa = XCConfigurationList; buildConfigurations = (D1,D2); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+  C2 = { isa = XCConfigurationList; buildConfigurations = (D3,D4); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+  D1 = { isa = XCBuildConfiguration; buildSettings = { ALWAYS_SEARCH_USER_PATHS = NO; SDKROOT = iphoneos; }; name = Debug; };
+  D2 = { isa = XCBuildConfiguration; buildSettings = { ALWAYS_SEARCH_USER_PATHS = NO; SDKROOT = iphoneos; }; name = Release; };
+  D3 = { isa = XCBuildConfiguration; buildSettings = { PRODUCT_BUNDLE_IDENTIFIER = com.example.ESP32TimerApp; INFOPLIST_FILE = ESP32TimerApp/Info.plist; SWIFT_VERSION = 5.0; IPHONEOS_DEPLOYMENT_TARGET = 15.0; TARGETED_DEVICE_FAMILY = "1,2"; PRODUCT_NAME = "$(TARGET_NAME)"; CODE_SIGN_STYLE = Automatic; }; name = Debug; };
+  D4 = { isa = XCBuildConfiguration; buildSettings = { PRODUCT_BUNDLE_IDENTIFIER = com.example.ESP32TimerApp; INFOPLIST_FILE = ESP32TimerApp/Info.plist; SWIFT_VERSION = 5.0; IPHONEOS_DEPLOYMENT_TARGET = 15.0; TARGETED_DEVICE_FAMILY = "1,2"; PRODUCT_NAME = "$(TARGET_NAME)"; CODE_SIGN_STYLE = Automatic; }; name = Release; };
+ };
+ rootObject = A1;
+}

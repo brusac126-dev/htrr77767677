@@ -2,7 +2,9 @@ name: Compila App iOS
 
 on:
   push:
-    branches: [ "main", "principale" ]
+    branches: [ "main", "principale", "master" ]
+  pull_request:
+    branches: [ "main", "principale", "master" ]
 
 jobs:
   build:
@@ -18,4 +20,17 @@ jobs:
           -project "ESP32TimerApp.xcodeproj" \
           -scheme "ESP32TimerApp" \
           -destination 'generic/platform=iOS' \
+          -derivedDataPath build \
           CODE_SIGNING_ALLOWED=NO
+
+    - name: Prepara ed esporta l'applicazione
+      run: |
+        mkdir -p Payload
+        cp -r build/Build/Products/Debug-iphoneos/*.app Payload/
+        zip -r ESP32TimerApp.ipa Payload
+
+    - name: Carica il file scaricabile
+      uses: actions/upload-artifact@v4
+      with:
+        name: ESP32TimerApp-IPA
+        path: ESP32TimerApp.ipa
